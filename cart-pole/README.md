@@ -25,4 +25,4 @@ Agent was trained using Q-learning algorithms described in [this article](http:/
 
 ## Results
 
-![Results](https://github.com/yrafiyev/openai-gym/tree/master/cart-pole/batch_32_layer_12.jpg)
+![Results](https://github.com/yrafiyev/openai-gym/blob/master/cart-pole/batch_32_layer_12.JPG)
