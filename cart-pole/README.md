@@ -24,3 +24,5 @@ and the goal is to prevent it from falling over. A reward of +1 is provided for 
 Agent was trained using Q-learning algorithms described in [this article](http://www.davidqiu.com:8888/research/nature14236.pdf).
 
 ## Results
+
+![Results](https://github.com/yrafiyev/openai-gym/tree/master/cart-pole/batch_32_layer_12.jpg)
