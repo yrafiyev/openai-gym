@@ -3,7 +3,7 @@ import numpy as np
 import random
 import tensorflow as tf
 import collections
-
+import matplotlib.pyplot as plt
 
 class GymLoader:
 
@@ -32,7 +32,8 @@ class QAgent:
     num_episodes = 1000
     batch_size = 64
     memory_size = 50000
-    layer_dimension = 20
+    layer_dimension = 12
+    rewards = []
 
     def __init__(self, render):
         self.experience = collections.deque(maxlen=self.memory_size)
@@ -62,7 +63,7 @@ class QAgent:
         B_hidden = tf.Variable(tf.constant(0.0001, shape=[self.layer_dimension]))
         B_hidden_second = tf.Variable(tf.constant(0.0001, shape=[self.layer_dimension]))
 
-        # One Layer Model
+        # Two Hidden Layer Model
         layer = tf.nn.relu_layer(self.input, W, B)
         hidden_layer = tf.nn.relu_layer(layer, W_hidden, B_hidden)
         hidden_layer_second = tf.nn.relu_layer(hidden_layer, W_hidden_second, B_hidden_second)
@@ -158,8 +159,16 @@ class QAgent:
                 if done:
                     print("Episode #: ", i, " Total Reward: ", step)
                     self.update_epsilon()
+                    self.rewards.append(step)
                     step = 0
                     break
 
-agent = QAgent(False)
-agent.train(1000)
+    def plot(self):
+        plt.plot(self.rewards)
+        plt.ylabel('Rewards')
+        plt.xlabel('Episode #')
+        plt.show()
+
+agent = QAgent(render=False)
+agent.train(number_of_episodes=1000)
+agent.plot()
